@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
  inputurl:string;
  rssParsed: Post[] = [];
  showdata :boolean;
- loading : boolean=false;
  error: any = null;
  i:any;
  j:any;
@@ -31,34 +30,20 @@ export class HomeComponent implements OnInit {
 
   public onSubmit(input:string){
     console.log(input);
-    this.loading = true;
-    this.getRssFeed(input).pipe(finalize(() => this.loading = false))
+    this.getRssFeed(input)
     .subscribe(rssParsed => {
       this.rssParsed=rssParsed;
-      // console.log(this.rssParsed)
-      // for(this.i in this.rssParsed){
-      //   for(this.j in this.rssParsed[this.i]){
-      //     if(this.j.indexOf('media')>-1){
-      //     console.log(this.rssParsed[this.i][this.j]);
-      //     }
-      //   }
-      //   // break;
-      // }
+      console.log(this.rssParsed);
      if(this.rssParsed.length>0){
      this.showdata=true;
      }
-    }, e => this.error = e);
+    }
+    );
   }
    private getRssFeed(inputvalue:string):Observable<any>{
       this.inputurl=inputvalue;
-      // return this.http.get(this.inputurl).pipe(
-      //   catchError(
-      //     this.handleError("callingRssFeed")
-      //     )
-      //   );
       return this.http.get("https://cors-anywhere.herokuapp.com/" + this.inputurl, {responseType: 'text'})
       .pipe(map(xmlText => {
-        // console.log(xmlText);
         const XML = new DOMParser().parseFromString(xmlText, 'text/xml');
         const obj = parse(XML);
         const items = get(obj, 'channel.item') || [];

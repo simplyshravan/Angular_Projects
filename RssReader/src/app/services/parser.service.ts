@@ -1,7 +1,3 @@
-/**
- * This parser from:
- * https://andrew.stwrt.ca/posts/js-xml-parsing/
- */
 import { each, has, isArray, isEmpty, isPlainObject, isString, reduce, size, values } from 'lodash';
 import { Post } from '../models/postmodel';
 

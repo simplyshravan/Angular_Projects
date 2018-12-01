@@ -1,14 +1,18 @@
 <div>
+        <h1 class="h1align">RSS Feed Reader</h1>
+  <div>
   <input #box class="input" placeholder="Enter the RSS feed URL here">
-  <button color="primary" (click)="onSubmit(box.value)">Go</button>
-  <div class="container"  *ngIf="rssParsed.length>0">
+</div>
+  <button class="gobutton" (click)="onSubmit(box.value)">Go</button>
+  <div class="feeds" *ngIf="rssParsed.length>0">
+      <h3>The feeds are below</h3>
       <div *ngFor="let item of rssParsed" class="d-flex post" >
-        <h6 >
+        <h5 >
           <span *ngIf="item.author">
               {{item.author}},
           </span>
           {{item.pubDate }}
-        </h6>
+        </h5>
         <h4>
           <a target="_blank" [href]="item.link">{{item.title}}</a><sup>↗</sup>
         </h4>
@@ -18,9 +22,9 @@
         <div class="item-container">
           <div><p>{{item.description}}</p></div>
         </div>
-        <div class="thumbnail">
-            <img [src]="item.media.url" style="width:200px;height:200px">
-          </div>
+        <div *ngIf="item?.media?.url">
+            <img [src]="item.media.url" class="imgstyle">
+          </div> 
       </div>
   </div>
 </div>

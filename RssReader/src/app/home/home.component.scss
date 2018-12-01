@@ -1,11 +1,31 @@
+.h1align {
+    margin: 2% 0 0 35%;
+    font-size: 30px;
+  }
+
 .input {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+    width: 80%;
+    height: 24px;
+    margin: 4% 0 0 5%;
+    font-size: 18px;
+    padding: 3px 3px 3px 3px;
+    border: 0;
+    border-bottom: 1px solid black;
+    color: primary;
+  }
+
+.gobutton{
+    margin: 1% 0 0 5%;
+    size: 50%;
+    font-size: 30px;
   }
   
-.item-img-container{
-    height: 10px !important;
-    width: 10px !important;
+.feeds{
+    margin:5% 0 0 5%;
     // width: 100%;
+}
+
+.imgstyle{
+ width:200px;
+ height:200px;
 }

@@ -8,5 +8,3 @@ export class Post {
     isoDate: string;
     media:JSON;
   }
-  
-  
