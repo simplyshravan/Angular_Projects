@@ -1,0 +1,26 @@
+<div>
+  <input #box class="input" placeholder="Enter the RSS feed URL here">
+  <button color="primary" (click)="onSubmit(box.value)">Go</button>
+  <div class="container"  *ngIf="rssParsed.length>0">
+      <div *ngFor="let item of rssParsed" class="d-flex post" >
+        <h6 >
+          <span *ngIf="item.author">
+              {{item.author}},
+          </span>
+          {{item.pubDate }}
+        </h6>
+        <h4>
+          <a target="_blank" [href]="item.link">{{item.title}}</a><sup>↗</sup>
+        </h4>
+        <div *ngIf="item?.categories?.length" class="small text-muted mb-1">
+          <em *ngFor="let cat of item.categories; let last = last">{{cat}}<span *ngIf="!last">, </span></em>
+        </div>
+        <div class="item-container">
+          <div><p>{{item.description}}</p></div>
+        </div>
+        <div class="thumbnail">
+            <img [src]="item.media.url" style="width:200px;height:200px">
+          </div>
+      </div>
+  </div>
+</div>
