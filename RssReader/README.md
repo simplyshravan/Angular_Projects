@@ -1,5 +1,6 @@
 # RssReader
 
+RssReader is a web based application in which you can input rss feed url and on clicking submit. It will get the latest feed from that url with images.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
 ## Download all dependencies
